@@ -23,16 +23,16 @@ final radiansPerHour = radians(360 / 12);
 /// A basic analog clock.
 ///
 /// You can do better than this!
-class AnalogClock extends StatefulWidget {
-  const AnalogClock(this.model);
+class CircleClock extends StatefulWidget {
+  const CircleClock(this.model);
 
   final ClockModel model;
 
   @override
-  _AnalogClockState createState() => _AnalogClockState();
+  _CircleClockState createState() => _CircleClockState();
 }
 
-class _AnalogClockState extends State<AnalogClock> {
+class _CircleClockState extends State<CircleClock> {
   var _now = DateTime.now();
   var _temperature = '';
   var _temperatureRange = '';
@@ -50,7 +50,7 @@ class _AnalogClockState extends State<AnalogClock> {
   }
 
   @override
-  void didUpdateWidget(AnalogClock oldWidget) {
+  void didUpdateWidget(CircleClock oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.model != oldWidget.model) {
       oldWidget.model.removeListener(_updateModel);
