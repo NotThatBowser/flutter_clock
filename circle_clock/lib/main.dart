@@ -9,7 +9,7 @@ import 'package:flutter_clock_helper/model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'analog_clock.dart';
+import 'components/the_clock.dart';
 
 void main() {
   // A temporary measure until Platform supports web and TargetPlatform supports
@@ -30,5 +30,5 @@ void main() {
   //
   // Your job is to edit [AnalogClock], or replace it with your own clock
   // widget. (Look in analog_clock.dart for more details!)
-  runApp(ClockCustomizer((ClockModel model) => AnalogClock(model)));
+  runApp(ClockCustomizer((ClockModel model) => TheClock(model)));
 }
