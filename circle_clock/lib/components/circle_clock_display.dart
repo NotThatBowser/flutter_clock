@@ -7,12 +7,10 @@ class CircleClockDisplay extends StatelessWidget {
   const CircleClockDisplay({
     Key key,
     @required this.timeNow,
-    @required this.clockTheme,
     @required this.displaySize,
   }) : super(key: key);
 
   final DateTime timeNow;
-  final ThemeData clockTheme;
   final Size displaySize;
 
   double get secondsProgress => timeNow.second / 59.0;
@@ -26,21 +24,18 @@ class CircleClockDisplay extends StatelessWidget {
           children: <Widget>[
             //? HOUR Hand
             OffsetCircleHand(
-              clockTheme: clockTheme,
               displaySize: displaySize,
               handModel: ConfigHandData.hourHand,
               progress: hoursProgress,
             ),
             //? MINUTE Hand
             OffsetCircleHand(
-              clockTheme: clockTheme,
               displaySize: displaySize,
               handModel: ConfigHandData.minuteHand,
               progress: minutesProgress,
             ),
             //? SECOND Hand
             OffsetCircleHand(
-              clockTheme: clockTheme,
               displaySize: displaySize,
               handModel: ConfigHandData.secondHand,
               progress: secondsProgress,

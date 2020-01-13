@@ -6,13 +6,11 @@ import 'circle_hand.dart';
 class OffsetCircleHand extends StatelessWidget {
   const OffsetCircleHand({
     Key key,
-    @required this.clockTheme,
     @required this.displaySize,
     @required this.handModel,
     @required this.progress,
   }) : super(key: key);
 
-  final ThemeData clockTheme;
   final Size displaySize;
   final CircleHandModel handModel;
   final double progress;
