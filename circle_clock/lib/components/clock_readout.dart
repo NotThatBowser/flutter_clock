@@ -8,8 +8,6 @@ class ClockReadout extends StatelessWidget {
 
   final String timeText;
 
-  final double _fontSize = 16;
-
   @override
   Widget build(BuildContext context) => Stack(
         //! Outlined text
@@ -17,17 +15,19 @@ class ClockReadout extends StatelessWidget {
           Text(
             timeText,
             style: TextStyle(
-              fontSize: _fontSize,
+              fontSize: 18,
+              fontFamily: "Quicksand",
               foreground: Paint()
                 ..style = PaintingStyle.stroke
-                ..strokeWidth = 1.5
+                ..strokeWidth = 1.0
                 ..color = Colors.grey[600],
             ),
           ),
           Text(
             timeText,
             style: TextStyle(
-              fontSize: _fontSize,
+              fontSize: 18,
+              fontFamily: "Quicksand",
               color: Colors.white,
             ),
           ),
