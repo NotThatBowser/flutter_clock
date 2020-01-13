@@ -13,16 +13,16 @@ import 'package:intl/intl.dart';
 
 /// A clock that shows the time using colourful,
 /// overlapping circles that move across the screen.
-class CircleClock extends StatefulWidget {
-  const CircleClock(this.model);
+class TheClock extends StatefulWidget {
+  const TheClock(this.model);
 
   final ClockModel model;
 
   @override
-  _CircleClockState createState() => _CircleClockState();
+  _TheClockState createState() => _TheClockState();
 }
 
-class _CircleClockState extends State<CircleClock> {
+class _TheClockState extends State<TheClock> {
   bool get _is24hr => widget.model.is24HourFormat;
 
   DateTime _now = DateTime.now();
