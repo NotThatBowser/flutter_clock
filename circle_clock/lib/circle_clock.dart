@@ -23,39 +23,22 @@ class CircleClock extends StatefulWidget {
 }
 
 class _CircleClockState extends State<CircleClock> {
+  bool get _is24hr => widget.model.is24HourFormat;
+
   DateTime _now = DateTime.now();
   Timer _timer;
-  bool _is24hr = true;
 
   @override
   void initState() {
     super.initState();
-    widget.model.addListener(_updateModel);
     // Set the initial values.
     _updateTime();
-    _updateModel();
-  }
-
-  @override
-  void didUpdateWidget(CircleClock oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.model != oldWidget.model) {
-      oldWidget.model.removeListener(_updateModel);
-      widget.model.addListener(_updateModel);
-    }
   }
 
   @override
   void dispose() {
     _timer?.cancel();
-    widget.model.removeListener(_updateModel);
     super.dispose();
-  }
-
-  void _updateModel() {
-    setState(() {
-      _is24hr = widget.model.is24HourFormat;
-    });
   }
 
   void _updateTime() {
