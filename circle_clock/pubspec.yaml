@@ -18,3 +18,14 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Josefin
+      fonts:
+        - asset: assets/fonts/JosefinSans-Light.ttf
+    - family: Comfortaa
+      fonts:
+        - asset: assets/fonts/Comfortaa-VariableFont_wght.ttf
+    - family: Quicksand
+      fonts:
+        - asset: assets/fonts/Quicksand-VariableFont_wght.ttf
