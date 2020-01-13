@@ -4,14 +4,12 @@
 
 import 'dart:async';
 
+import 'package:analog_clock/components/circle_clock_display.dart';
 import 'package:flutter_clock_helper/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:intl/intl.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
-
-import 'container_hand.dart';
-import 'drawn_hand.dart';
 
 /// Total distance traveled by a second or a minute hand, each second or minute,
 /// respectively.
@@ -103,7 +101,7 @@ class _CircleClockState extends State<CircleClock> {
             highlightColor: Color(0xFF8AB4F8),
             // Second hand.
             accentColor: Color(0xFF669DF6),
-            backgroundColor: Color(0xFFD2E3FC),
+            backgroundColor: Color(0xFF543583),
           )
         : Theme.of(context).copyWith(
             primaryColor: Color(0xFFD2E3FC),
@@ -135,35 +133,10 @@ class _CircleClockState extends State<CircleClock> {
         color: customTheme.backgroundColor,
         child: Stack(
           children: [
-            // Example of a hand drawn with [CustomPainter].
-            DrawnHand(
-              color: customTheme.accentColor,
-              thickness: 4,
-              size: 1,
-              angleRadians: _now.second * radiansPerTick,
-            ),
-            DrawnHand(
-              color: customTheme.highlightColor,
-              thickness: 16,
-              size: 0.9,
-              angleRadians: _now.minute * radiansPerTick,
-            ),
-            // Example of a hand drawn with [Container].
-            ContainerHand(
-              color: Colors.transparent,
-              size: 0.5,
-              angleRadians: _now.hour * radiansPerHour +
-                  (_now.minute / 60) * radiansPerHour,
-              child: Transform.translate(
-                offset: Offset(0.0, -60.0),
-                child: Container(
-                  width: 32,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: customTheme.primaryColor,
-                  ),
-                ),
-              ),
+            CircleClockDisplay(
+              timeNow: DateTime.now(),
+              clockTheme: customTheme,
+              displaySize: MediaQuery.of(context).size,
             ),
             Positioned(
               left: 0,
