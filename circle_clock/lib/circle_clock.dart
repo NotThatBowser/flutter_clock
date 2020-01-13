@@ -61,7 +61,7 @@ class _CircleClockState extends State<CircleClock> {
 
     return Semantics.fromProperties(
       properties: SemanticsProperties(
-        label: 'Analog clock with time $timeText',
+        label: 'Animated circle clock reading $timeText',
         value: timeText,
       ),
       child: AnimatedContainer(
