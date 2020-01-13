@@ -22,6 +22,7 @@ class CircleClockDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ClipRect(
         child: Stack(
+          alignment: Alignment.center,
           children: <Widget>[
             //? HOUR Hand
             OffsetCircleHand(

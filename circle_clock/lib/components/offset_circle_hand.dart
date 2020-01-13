@@ -19,8 +19,14 @@ class OffsetCircleHand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.translate(
-      offset: Offset(progress * 100, 0.0),
+    return AnimatedContainer(
+      curve: Curves.elasticOut,
+      duration: Duration(milliseconds: handModel.animationMs),
+      transform: Matrix4.translationValues(
+        (progress - 0.5) * (displaySize.width),
+        0.0,
+        0.0,
+      ),
       child: CircleHand(
         scale: handModel.scale,
         lightness: handModel.lightness,
