@@ -22,7 +22,18 @@ class CircleClockDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) => AnimatedContainer(
         duration: Duration(seconds: 1),
-        color: getTimeBasedColor(timeNow),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            stops: <double>[0.0, 0.2, 1.0],
+            colors: [
+              getTimeBasedColor(timeNow, lightnessScale: 0.8),
+              getTimeBasedColor(timeNow),
+              getTimeBasedColor(timeNow, lightnessScale: 1.5),
+            ],
+          ),
+        ),
         child: ClipRect(
           child: Stack(
             alignment: Alignment.center,
@@ -52,14 +63,14 @@ class CircleClockDisplay extends StatelessWidget {
 
   // ----- HELPERS -----
   /// Progresses through the colour spectrum once per hour.
-  Color getTimeBasedColor(DateTime time) {
+  Color getTimeBasedColor(DateTime time, {double lightnessScale = 1.0}) {
     double hueProgress = 360.0 * (time.minute / 59.0);
 
     return HSLColor.fromAHSL(
       1.0,
       hueProgress,
       isLightTheme ? 0.65 : 0.65,
-      isLightTheme ? 0.55 : 0.30,
+      lightnessScale * (isLightTheme ? 0.55 : 0.30),
     ).toColor();
   }
 }
