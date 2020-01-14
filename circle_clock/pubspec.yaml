@@ -10,7 +10,7 @@ dependencies:
     sdk: flutter
   flutter_clock_helper:
     path: ../flutter_clock_helper
-  cupertino_icons: ^0.1.2
+  auto_size_text: 2.1.0
 
 dev_dependencies:
   flutter_test:
