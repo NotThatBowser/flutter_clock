@@ -18,29 +18,41 @@ class CircleClockDisplay extends StatelessWidget {
   double get hoursProgress => timeNow.hour / 23.0;
 
   @override
-  Widget build(BuildContext context) => ClipRect(
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            //? HOUR Hand
-            OffsetCircleHand(
-              displaySize: displaySize,
-              handModel: ConfigHandData.hourHand,
-              progress: hoursProgress,
-            ),
-            //? MINUTE Hand
-            OffsetCircleHand(
-              displaySize: displaySize,
-              handModel: ConfigHandData.minuteHand,
-              progress: minutesProgress,
-            ),
-            //? SECOND Hand
-            OffsetCircleHand(
-              displaySize: displaySize,
-              handModel: ConfigHandData.secondHand,
-              progress: secondsProgress,
-            ),
-          ],
+  Widget build(BuildContext context) => AnimatedContainer(
+        duration: Duration(seconds: 1),
+        color: getTimeBasedColor(timeNow),
+        child: ClipRect(
+          child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              //? HOUR Hand
+              OffsetCircleHand(
+                displaySize: displaySize,
+                handModel: ConfigHandData.hourHand,
+                progress: hoursProgress,
+              ),
+              //? MINUTE Hand
+              OffsetCircleHand(
+                displaySize: displaySize,
+                handModel: ConfigHandData.minuteHand,
+                progress: minutesProgress,
+              ),
+              //? SECOND Hand
+              OffsetCircleHand(
+                displaySize: displaySize,
+                handModel: ConfigHandData.secondHand,
+                progress: secondsProgress,
+              ),
+            ],
+          ),
         ),
       );
+
+  // ----- HELPERS -----
+  /// Progresses through the colour spectrum once per hour.
+  Color getTimeBasedColor(DateTime time) {
+    double hueProgress = 360.0 * (time.minute / 59.0);
+
+    return HSLColor.fromAHSL(1.0, hueProgress, 0.9, 0.7).toColor();
+  }
 }

@@ -17,6 +17,15 @@ class CircleHand extends StatelessWidget {
           decoration: BoxDecoration(
             backgroundBlendMode: BlendMode.difference,
             color: HSLColor.fromAHSL(1.0, 0.0, 0.0, lightness).toColor(),
+            /*gradient: LinearGradient(
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+              stops: <double>[0.0, 1.0],
+              colors: [
+                HSLColor.fromAHSL(1.0, 0.0, 0.0, lightness).toColor(),
+                HSLColor.fromAHSL(1.0, 0.0, 0.0, lightness + 0.25).toColor(),
+              ],
+            ),*/
             shape: BoxShape.circle,
           ),
         ),
