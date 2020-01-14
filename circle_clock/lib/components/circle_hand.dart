@@ -22,8 +22,8 @@ class CircleHand extends StatelessWidget {
               end: Alignment.topRight,
               stops: <double>[0.0, 1.0],
               colors: [
-                HSLColor.fromAHSL(1.0, 0.0, 0.5, lightness - 0.2).toColor(),
-                HSLColor.fromAHSL(1.0, 0.0, 0.8, lightness + 0.2).toColor(),
+                HSLColor.fromAHSL(1.0, 0.0, 0.5, lightness - 0.1).toColor(),
+                HSLColor.fromAHSL(1.0, 0.0, 0.5, lightness + 0.1).toColor(),
               ],
             ),
             shape: BoxShape.circle,
