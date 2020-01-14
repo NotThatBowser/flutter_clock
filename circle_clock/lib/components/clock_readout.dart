@@ -4,39 +4,45 @@ class ClockReadout extends StatelessWidget {
   const ClockReadout({
     Key key,
     @required this.timeText,
+    @required this.fontSize,
+    @required this.padding,
+    this.fontFamily = "Quicksand",
   }) : super(key: key);
 
   final String timeText;
-
-  final String _fontFamily = "Quicksand";
-  final double _fontSize = 26.0;
+  final double fontSize;
+  final EdgeInsetsGeometry padding;
+  final String fontFamily;
 
   @override
-  Widget build(BuildContext context) => Stack(
-        alignment: Alignment.bottomCenter,
-        //! Outlined text
-        children: <Widget>[
-          Text(
-            timeText,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: _fontSize,
-              fontFamily: _fontFamily,
-              foreground: Paint()
-                ..style = PaintingStyle.stroke
-                ..strokeWidth = 1.5
-                ..color = Colors.grey[600],
+  Widget build(BuildContext context) => Padding(
+        padding: padding,
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          //! Outlined text
+          children: <Widget>[
+            Text(
+              timeText,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: fontFamily,
+                foreground: Paint()
+                  ..style = PaintingStyle.stroke
+                  ..strokeWidth = 1.5
+                  ..color = Colors.grey[600],
+              ),
             ),
-          ),
-          Text(
-            timeText,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: _fontSize,
-              fontFamily: _fontFamily,
-              color: Colors.white,
+            Text(
+              timeText,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: fontFamily,
+                color: Colors.white,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       );
 }
