@@ -13,7 +13,7 @@ class ConfigHandData {
   );
   static const secondHand = const CircleHandModel(
     scale: 0.1,
-    lightness: 0.75,
+    lightness: 0.70,
     animationMs: 900,
   );
 }

@@ -70,6 +70,7 @@ class _TheClockState extends State<TheClock> {
           CircleClockDisplay(
             timeNow: DateTime.now(),
             displaySize: MediaQuery.of(context).size,
+            isLightTheme: Theme.of(context).brightness == Brightness.light,
           ),
           FractionallySizedBox(
             heightFactor: 0.12,

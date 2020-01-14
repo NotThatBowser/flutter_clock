@@ -8,10 +8,12 @@ class CircleClockDisplay extends StatelessWidget {
     Key key,
     @required this.timeNow,
     @required this.displaySize,
+    @required this.isLightTheme,
   }) : super(key: key);
 
   final DateTime timeNow;
   final Size displaySize;
+  final bool isLightTheme;
 
   double get secondsProgress => timeNow.second / 59.0;
   double get minutesProgress => timeNow.minute / 59.0;
@@ -53,6 +55,11 @@ class CircleClockDisplay extends StatelessWidget {
   Color getTimeBasedColor(DateTime time) {
     double hueProgress = 360.0 * (time.minute / 59.0);
 
-    return HSLColor.fromAHSL(1.0, hueProgress, 0.9, 0.7).toColor();
+    return HSLColor.fromAHSL(
+      1.0,
+      hueProgress,
+      isLightTheme ? 0.65 : 0.65,
+      isLightTheme ? 0.55 : 0.30,
+    ).toColor();
   }
 }
