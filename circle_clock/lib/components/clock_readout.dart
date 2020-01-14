@@ -10,18 +10,15 @@ class ClockReadout extends StatelessWidget {
   final String timeText;
 
   final String _fontFamily = "Quicksand";
-  final double _fontSize = 100.0;
+  final double _fontSize = 26.0;
 
   @override
   Widget build(BuildContext context) => Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.bottomCenter,
         //! Outlined text
         children: <Widget>[
-          AutoSizeText(
+          Text(
             timeText,
-            minFontSize: 10.0,
-            maxFontSize: _fontSize,
-            stepGranularity: 10.0,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: _fontSize,
@@ -32,11 +29,8 @@ class ClockReadout extends StatelessWidget {
                 ..color = Colors.grey[600],
             ),
           ),
-          AutoSizeText(
+          Text(
             timeText,
-            minFontSize: 10.0,
-            maxFontSize: _fontSize,
-            stepGranularity: 10.0,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: _fontSize,

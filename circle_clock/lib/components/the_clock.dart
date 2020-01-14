@@ -72,9 +72,8 @@ class _TheClockState extends State<TheClock> {
             displaySize: MediaQuery.of(context).size,
             isLightTheme: Theme.of(context).brightness == Brightness.light,
           ),
-          FractionallySizedBox(
-            heightFactor: 0.12,
-            widthFactor: 0.15,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10.0),
             child: ClockReadout(timeText: timeText),
           ),
         ],
