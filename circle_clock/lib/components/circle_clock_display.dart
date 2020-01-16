@@ -28,12 +28,14 @@ class CircleClockDisplay extends StatelessWidget {
             end: Alignment.topCenter,
             stops: <double>[0.0, 0.2, 1.0],
             colors: [
-              getTimeBasedColor(timeNow, lightnessScale: 0.8),
-              getTimeBasedColor(timeNow),
-              getTimeBasedColor(timeNow, lightnessScale: 1.5),
+              _getTimeBasedColor(timeNow, lightnessScale: 0.8),
+              _getTimeBasedColor(timeNow),
+              _getTimeBasedColor(timeNow, lightnessScale: 1.5),
             ],
           ),
         ),
+        // [CircleHand]s are sized and offset according to their type,
+        // and move across the screen in the x-axis over time.
         child: ClipRect(
           child: Stack(
             alignment: Alignment.center,
@@ -63,7 +65,7 @@ class CircleClockDisplay extends StatelessWidget {
 
   // ----- HELPERS -----
   /// Progresses through the colour spectrum once per hour.
-  Color getTimeBasedColor(DateTime time, {double lightnessScale = 1.0}) {
+  Color _getTimeBasedColor(DateTime time, {double lightnessScale = 1.0}) {
     double hueProgress = 360.0 * (time.minute / 59.0);
 
     return HSLColor.fromAHSL(

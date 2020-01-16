@@ -1,15 +1,19 @@
-# Flutter Clock
+# Circle Clock
 
-Welcome to Flutter Clock!
+A clock created for the Flutter Clock challenge.
 
-See [flutter.dev/clock](https://flutter.dev/clock) for how to get started, submission requirements, contest rules, and FAQs.
+![Example of the clock in action](https://giant.gfycat.com/DrearyPossibleBluewhale.gif)
 
-See a [live demo](https://maryx.github.io/flutter_clock) with Flutter for Web!
+Shaded circles representing hour, minute and second hands move across the screen, while the background flows through the colour spectrum every hour.
 
-Example [Analog Clock](analog_clock)
+This creates an ever-changing landscape throughout the day as the circles interact to create contrasting colours and interesting patterns. The clock gives an indication of the time at a glance and a readout is provided for precision.
 
-<img src='analog_clock/analog.gif' width='350'>
+## Supported Settings
 
-Example [Digital Clock](digital_clock)
+* **24 Hour** - The readout changes as required.
+* **Light/Dark** - The tone of the colours reflect the theme.
 
-<img src='digital_clock/digital.gif' width='350'>
+## Licenses
+
+* **Code** - A MIT license is provided at [./LICENSE](./LICENSE)
+* **Assets** - The font 'Quicksand' is used, its OFL license is provided at [circle_clock/assets/fonts/quicksand/OFL.txt](circle_clock/assets/fonts/quicksand/OFL.txt)
