@@ -21,4 +21,4 @@ flutter:
   fonts:
     - family: Quicksand
       fonts:
-        - asset: assets/fonts/Quicksand-VariableFont_wght.ttf
+        - asset: assets/fonts/quicksand/Quicksand-VariableFont_wght.ttf
