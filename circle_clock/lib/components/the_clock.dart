@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:analog_clock/components/circle_clock_display.dart';
 import 'package:analog_clock/components/clock_readout.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_clock_helper/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
@@ -54,9 +55,10 @@ class _TheClockState extends State<TheClock> {
 
   @override
   Widget build(BuildContext context) {
+    final theTime = DateTime.now();
     final timeText = _is24hr
-        ? DateFormat.Hm().format(DateTime.now())
-        : DateFormat.jm().format(DateTime.now());
+        ? DateFormat.Hm().format(theTime)
+        : DateFormat.jm().format(theTime);
 
     // An animated clock fills the screen and is overlayed with a text readout.
     //! Report semantics here & exclude subtree to avoid duplicate information.
@@ -69,7 +71,7 @@ class _TheClockState extends State<TheClock> {
           alignment: Alignment.bottomCenter,
           children: [
             CircleClockDisplay(
-              timeNow: DateTime.now(),
+              timeNow: theTime,
               displaySize: MediaQuery.of(context).size,
               isLightTheme: Theme.of(context).brightness == Brightness.light,
             ),
