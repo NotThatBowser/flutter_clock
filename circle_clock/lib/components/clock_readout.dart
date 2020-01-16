@@ -19,7 +19,8 @@ class ClockReadout extends StatelessWidget {
         padding: padding,
         child: Stack(
           alignment: Alignment.bottomCenter,
-          //! Outlined text
+          // Outlined text to improve readability on any background.
+          // Draw an outline of the text below the text itself.
           children: <Widget>[
             Text(
               timeText,

@@ -23,23 +23,69 @@ class TheClock extends StatefulWidget {
 }
 
 class _TheClockState extends State<TheClock> {
-  bool get _is24hr => widget.model.is24HourFormat;
-
   DateTime _now = DateTime.now();
   Timer _timer;
+  bool _is24hr;
 
   @override
   void initState() {
     super.initState();
-    // Set the initial values.
+    widget.model.addListener(_updateModel);
+    // Set initial values.
     _updateTime();
+    _updateModel();
+  }
+
+  @override
+  void didUpdateWidget(TheClock oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.model != oldWidget.model) {
+      oldWidget.model.removeListener(_updateModel);
+      widget.model.addListener(_updateModel);
+    }
   }
 
   @override
   void dispose() {
     _timer?.cancel();
+    widget.model.removeListener(_updateModel);
     super.dispose();
   }
+
+  @override
+  Widget build(BuildContext context) {
+    final timeText = _is24hr
+        ? DateFormat.Hm().format(DateTime.now())
+        : DateFormat.jm().format(DateTime.now());
+
+    // An animated clock fills the screen and is overlayed with a text readout.
+    //! Report semantics here & exclude subtree to avoid duplicate information.
+    return Semantics.fromProperties(
+      properties: SemanticsProperties(
+        label: 'A clock reading $timeText',
+      ),
+      child: ExcludeSemantics(
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            CircleClockDisplay(
+              timeNow: DateTime.now(),
+              displaySize: MediaQuery.of(context).size,
+              isLightTheme: Theme.of(context).brightness == Brightness.light,
+            ),
+            ClockReadout(
+              timeText: timeText,
+              fontSize: 22.0,
+              padding: const EdgeInsets.only(bottom: 8.0),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ----- HELPERS -----
+  void _updateModel() => setState(() => _is24hr = widget.model.is24HourFormat);
 
   void _updateTime() {
     setState(() {
@@ -51,34 +97,5 @@ class _TheClockState extends State<TheClock> {
         _updateTime,
       );
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final timeText = _is24hr
-        ? DateFormat.Hm().format(DateTime.now())
-        : DateFormat.jm().format(DateTime.now());
-
-    return Semantics.fromProperties(
-      properties: SemanticsProperties(
-        label: 'Animated circle clock reading $timeText',
-        value: timeText,
-      ),
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          CircleClockDisplay(
-            timeNow: DateTime.now(),
-            displaySize: MediaQuery.of(context).size,
-            isLightTheme: Theme.of(context).brightness == Brightness.light,
-          ),
-          ClockReadout(
-            timeText: timeText,
-            fontSize: 24.0,
-            padding: const EdgeInsets.only(bottom: 8.0),
-          ),
-        ],
-      ),
-    );
   }
 }
