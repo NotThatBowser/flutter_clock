@@ -1,8 +1,12 @@
 # Circle Clock
 
-The clock animates shaded circles (representing hour, minute and second hands) across the screen, while the background animates through the colour spectrum each hour.
+A clock created for the Flutter Clock challenge.
 
-This creates an ever-changing landscape throughout the day as the circles interact to create contrasting colours. The circles give an indication of the time at a glance and a readout is provided for precision.
+![Example of the clock in action](https://giant.gfycat.com/DrearyPossibleBluewhale.gif)
+
+Shaded circles representing hour, minute and second hands move across the screen, while the background flows through the colour spectrum every hour.
+
+This creates an ever-changing landscape throughout the day as the circles interact to create contrasting colours and interesting patterns. The clock gives an indication of the time at a glance and a readout is provided for precision.
 
 ## Supported Settings
 
