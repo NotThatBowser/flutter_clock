@@ -2,7 +2,7 @@
 
 A clock created for the Flutter Clock challenge.
 
-![Example of the clock in action](https://giant.gfycat.com/DrearyPossibleBluewhale.gif)
+![Example of the clock in action](https://media.giphy.com/media/fOmHy9fRdQZJmgXUVQ/giphy.gif)
 
 Shaded circles representing hour, minute and second hands move across the screen, while the background flows through the colour spectrum every hour.
 
